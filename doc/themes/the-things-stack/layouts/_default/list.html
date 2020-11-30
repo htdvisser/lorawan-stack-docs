@@ -7,15 +7,17 @@
   {{ partial "new-in-version" . }}
 {{ end }}
 </h1>
+{{ with .Params.distributions }}
+	{{ $distributions := . }}
+	{{ if ( not ( reflect.IsSlice . ) ) }}
+		{{ $distributions = slice $distributions }}
+  	{{ end }}
+  	<p class="subtitle">
+  		{{ partial "distributions" (dict "distributions" $distributions) }}
+	</p>
+{{ end }}
 
 <div class="content">
-{{ with .Params.distributions }}
-  {{ $distributions := . }}
-  {{ if ( not ( reflect.IsSlice . ) ) }}
-    {{ $distributions = slice $distributions }}
-  {{ end }}
-  {{ partial "distributions" (dict "distributions" $distributions) }}
-{{ end }}
 {{ .Content }}
 </div>
 {{ end }}
