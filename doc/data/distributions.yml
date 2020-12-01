@@ -1,12 +1,17 @@
 Cloud:
-  color: "#00FFFF"
+  color: "#0032B4"
+  icon: "/img/tts_frames/frame_cloud.svg"
 Dedicated Cloud:
-  color: "#FFFFFF"
-Community:
-  color: "#AAAAAA"
+  color: "#D356FF"
+  icon: "/img/tts_frames/frame_dedicated_cloud.svg"
+The Things Network:
+  color: "#0D83D0"
 Open Source:
-  color: "#FB2166"
-Marketplace Launcher:
-  color: "#00FFAA"
+  color: "#00C1FF"
+  icon: "/img/tts_frames/frame_open_source.svg"
 Enterprise:
-  color: "#00AAAA"
+  color: "#00C985"
+  icon: "/img/tts_frames/frame_enterprise.svg"
+AWS Launcher:
+  color: "#F19419"
+  icon: "/img/tts_frames/frame_aws.svg"

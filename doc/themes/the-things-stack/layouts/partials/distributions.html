@@ -8,14 +8,15 @@
 {{ with .inline }}
 <span class="distribution-inline">{{ delimit $distributions ", " " and " }} Only</span>
 {{ else }}
-		{{ range $distributions }}
-		<a href="/download">
-			<button class="button is-small" style="color:{{ index ( index site.Data.distributions . ) "color" }};border-color:{{ index ( index site.Data.distributions . ) "color" }};">
+	<div class="buttons">
+	{{ range $distributions }}
+		{{ $distribution := index site.Data.distributions . }}
+		<a href="/download" class="button is-small is-short" style="color:{{ index $distribution "color" }};border-color:{{ index $distribution "color" }};">
 			<span class="icon">
-		    	<i class="fab fa-github"></i>
+		    	<img src="{{ index $distribution "icon" }}"></img>
 		    </span>
-		    <span>{{ . }}</span>
-			</button>
+		    <span class="has-text-weight-bold">{{ . }}</span>
 		</a>
-		{{ end }}
+	{{ end }}
+	</div>
 {{ end }}

@@ -343,6 +343,14 @@ details + blockquote {
   display: block;
 }
 
+.button.is-short {
+  height: 2.2em;
+  .icon {
+    height: 1em;
+    width: 1em;
+  }
+}
+
 table.fixed { table-layout:fixed; }
 table.fixed td { overflow: auto; }
 
