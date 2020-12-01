@@ -13,7 +13,7 @@
 		{{ $distributions = slice $distributions }}
   	{{ end }}
   	<p class="subtitle">
-  		{{ partial "distributions" (dict "distributions" $distributions) }}
+  		{{ partial "distributions" (dict "distributions" $distributions "header" true ) }}
 	</p>
 {{ end }}
 

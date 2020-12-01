@@ -1,22 +1,21 @@
-{{ $distributions := .distributions }}
+{{ $distributions :=  sort .distributions }}
 {{ $distributions_all := index site.Data "distributions" }}
 {{ range $distributions }}
-  {{ if not (isset $distributions_all .) }}
-    {{ errorf "distribution '%s' not in '%s'" . (delimit $distributions_all ", ") }}
-  {{ end }}
-{{ end }}
-{{ with .inline }}
-<span class="distribution-inline">{{ delimit $distributions ", " " and " }} Only</span>
-{{ else }}
-	<div class="buttons">
-	{{ range $distributions }}
-		{{ $distribution := index site.Data.distributions . }}
-		<a href="/download" class="button is-small is-short" style="color:{{ index $distribution "color" }};border-color:{{ index $distribution "color" }};">
-			<span class="icon">
-		    	<img src="{{ index $distribution "icon" }}"></img>
-		    </span>
-		    <span class="has-text-weight-bold">{{ . }}</span>
-		</a>
+	{{ if not (isset $distributions_all .) }}
+		{{ errorf "distribution '%s' not in '%s'" . (delimit $distributions_all ", ") }}
 	{{ end }}
+{{ end }}
+{{ if .inline }}
+	<span class="distribution-inline">
+		{{ delimit $distributions ", " " and " }} Only
+	</span>
+{{ else if .header }}
+	<div class="notification is-info is-light has-text-dark">
+		<h3 class="title mb-1">
+			{{ partial "distribution-badges" $distributions}}
+		</h3>
+		The following instructions apply to {{ delimit $distributions ", " " and " }} distributions. See the <a href="/download">downloads page</a> for a feature breakdown of distributions of The Things Stack.
 	</div>
+{{ else }}
+	{{ partial "distribution-badges" $distributions}}
 {{ end }}
