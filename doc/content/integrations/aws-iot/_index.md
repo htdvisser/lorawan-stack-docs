@@ -1,7 +1,7 @@
 ---
 title: "AWS IoT"
 description: ""
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Marketplace Launcher"]
+distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "AWS Launcher"]
 ---
 
 {{% tts %}} integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.
@@ -22,7 +22,7 @@ The recommended way to integrate with AWS IoT is by using the **Default Integrat
 
 Apart from the default integration which comes with a AWS CloudFormation template, you can also just let {{% tts %}} publish uplink messages and subscribe to downlink messages to AWS IoT Core. You can configure any AWS IoT Core endpoint, AWS access key, provide role-based access control (RBAC), configure the AWS IoT Core MQTT topic structure and which messages to publish.
 
-## Application Server Telemetry {{< distributions-inline "Marketplace Launcher" >}}
+## Application Server Telemetry {{< distributions-inline "AWS Launcher" >}}
 
 This is a simple integration that only supports publishing uplink messages and requires {{% tts %}} to run in your AWS account. This is typically only used for [AWS Marketplace AMI]({{< ref "/getting-started/aws/ami" >}}) deployments.
 
