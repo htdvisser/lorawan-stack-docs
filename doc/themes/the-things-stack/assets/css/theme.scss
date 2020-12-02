@@ -68,9 +68,6 @@ $table-cell-padding: 1.2em 0.75em;
 
 $tabs-border-bottom-color: $blue;
 
-// Modular imports broken in bulma 0.9
-// https://github.com/jgthms/bulma/issues/2797
-
 @import "bulma/bulma.sass";
 
 html {
