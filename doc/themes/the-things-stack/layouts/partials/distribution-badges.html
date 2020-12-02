@@ -3,9 +3,9 @@
 		{{ $distribution := index site.Data.distributions . }}
 		<a href="/download" class="button is-small is-short" style="color:{{ index $distribution "color" }};border-color:{{ index $distribution "color" }};">
 			<span class="icon">
-		    	<img src="{{ index $distribution "icon" }}"></img>
-		    </span>
-		    <span class="has-text-weight-bold">{{ . }}</span>
+				<img src="{{ index $distribution "icon" }}"></img>
+			</span>
+			<span class="has-text-weight-bold">{{ . }}</span>
 		</a>
 	{{ end }}
 </div>

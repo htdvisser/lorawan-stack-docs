@@ -11,9 +11,9 @@
 	{{ $distributions := . }}
 	{{ if ( not ( reflect.IsSlice . ) ) }}
 		{{ $distributions = slice $distributions }}
-  	{{ end }}
-  	<p class="subtitle">
-  		{{ partial "distributions" (dict "distributions" $distributions "header" true ) }}
+	{{ end }}
+	<p class="subtitle">
+		{{ partial "distributions" (dict "distributions" $distributions "header" true ) }}
 	</p>
 {{ end }}
 
