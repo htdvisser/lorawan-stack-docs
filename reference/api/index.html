@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>API | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="API">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="API">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/">
+  <meta name="twitter:title" content="API" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">API</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/reference/api/" class="is-active">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/authentication/" class="">Authentication</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/field-mask/" class="">Fields and Field Masks</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/application/" class="">Application APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/application_pub_sub/" class="">Application Pub/Sub APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/" class="">Application Server APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/application_webhooks/" class="">Application Webhook APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/end_device_claiming/" class="">End Device Claiming APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/events/" class="">Events API</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/" class="">Gateway APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/" class="">Gateway Server APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server_mqtt/" class="">Gateway Server MQTT</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/network_server/" class="">Network Server APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/organization/" class="">Organization APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/" class="">Storage Integration API</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/tenant/" class="">Tenant APIs</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/api/user/" class="">User APIs</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">API
+
+
+</h1>
+
+<div class="content">
+
+<p>This is the reference for the gRPC and HTTP APIs that The Things Stack exposes.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack API is different from The Things Network Stack V2 API. If migrating from V2, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/major-changes/">here</a> for an overview of changes.
+</div>
+<h2 id="field-masks">Field Masks</h2>
+<p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a> for more information about field masks.</p>
+<h2 id="http-queries">HTTP Queries</h2>
+<p>Additional fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -i -H <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you&rsquo;re having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
+</div>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-right" href="/docs/reference/api/authentication/">Authentication →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 26 Nov 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/api/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>MikroTik Routerboard wAP LoRa8 kit | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="MikroTik Routerboard wAP LoRa8 kit">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="MikroTik Routerboard wAP LoRa8 kit">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/">
+  <meta name="twitter:title" content="MikroTik Routerboard wAP LoRa8 kit" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">MikroTik Routerboard wAP LoRa8 kit</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" class="is-active">Overview</a>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">MikroTik Routerboard wAP LoRa8 kit
+
+
+</h1>
+
+<div class="content">
+
+<p>MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend.</p>
+<p>This guide shows how to connect this gateway to The Things Stack.</p>
+<p>Its technical specifications can be found in <a href="https://mikrotik.com/product/wap_lora8_kit">the MikroTik official documentation</a>.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  This gateway does not currently support changing Frequency Plans.
+</div>
+<p>There are multiple interfaces to configure the gateway parameters. This page guides you to connect it to The Things Stack using a web browser or the <a href="https://mikrotik.com/mobile_app">MikroTik Mobile App</a> for Android/iOS.</p>
+<figure class="float">
+    <img src="mikrotik-routerboard-connections.jpg"
+         alt="MikroTik Routerboard wAP LoRa8 kit connections"/> 
+</figure>
+
+<h2 id="physical-connections">Physical Connections</h2>
+<p>The MikroTik Routerboard wAP LoRa8 kit comes with a PoE adapter. The image on the right shows the proper connections to the device.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>User account on The Things Stack with rights to create Gateways.</li>
+<li>MikroTik Routerboard wAP LoRa8 kit connected via ethernet.</li>
+<li>A web browser (see section <a href="#configuration-via-browser">Configuration via Browser</a>), or the <a href="https://mikrotik.com/mobile_app">MikroTik Mobile App</a> installed on a smartphone (see section <a href="#configuration-via-app">Configuration via App</a>).</li>
+</ol>
+<h2 id="registration">Registration</h2>
+<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>.</p>
+<h2 id="configuration-via-browser">Configuration via Browser</h2>
+<p>The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID <code>MikroTik-xxxxxx</code>, where <code>xxxxxx</code> are the last 6 digits of the device&rsquo;s MAC Address (printed on the sticker of the box, under <strong>W01</strong>).</p>
+<p>Connect to this AP. By default, there&rsquo;s no password.</p>
+<p>Open a browser to <code>http://192.168.88.1/webfig/#Interfaces</code>.</p>
+<figure class="plain">
+    <img src="portal.png"
+         alt="Portal"/> 
+</figure>
+
+<p>In the left hand menu select <strong>LoRa</strong>. Make sure the status is set to <em>Disabled</em>, if needed press the <strong>D</strong> to disable the LoRa Device.</p>
+<figure class="plain">
+    <img src="portal-lora.png"
+         alt="LoRa"/> 
+</figure>
+
+<p>From the top menu, select the <strong>Servers</strong> Tab and press the <strong>Add New</strong> button.</p>
+<figure class="plain">
+    <img src="servers.png"
+         alt="Servers"/> 
+</figure>
+
+<p>Edit the server parameters.</p>
+<ul>
+<li><strong>Name</strong>: A distinct name</li>
+<li><strong>Address</strong>: Address of the Gateway Server. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
+<li><strong>Up port</strong>: UDP upstream port of the Gateway Server, typically <code>1700</code>.</li>
+<li><strong>Down port</strong>: UDP downstream port of the Gateway Server, typically <code>1700</code>.</li>
+</ul>
+<p>Press <strong>OK</strong> to save the parameters.</p>
+<figure class="plain">
+    <img src="parameters.png"
+         alt="Server Parameters"/> 
+</figure>
+
+<p>From the top menu, select the <strong>Devices Tab</strong>. Click the <strong>Gateway ID</strong> to configure it.</p>
+<figure class="plain">
+    <img src="portal-lora-disable.png"
+         alt="Devices"/> 
+</figure>
+
+<p>In the device settings, click the <strong>Network Servers Dropdown</strong> to view available servers. Choose the server you just created.</p>
+<figure class="plain">
+    <img src="device-parameters.png"
+         alt="Device parameters"/> 
+</figure>
+
+<figure class="plain">
+    <img src="device-parameters-selected.png"
+         alt="Device parameters selected"/> 
+</figure>
+
+<p>Select <strong>Public</strong> for the Network.</p>
+<figure class="plain">
+    <img src="public.png"
+         alt="Network public"/> 
+</figure>
+
+<p>Click OK to save the parameters.</p>
+<p>Press the <strong>E</strong> to enable the gateway device. It will become a <strong>D</strong> and the device status will update.</p>
+<figure class="plain">
+    <img src="portal-lora-enable.png"
+         alt="Device enable"/> 
+</figure>
+
+<p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
+<h2 id="configuration-via-app">Configuration via App</h2>
+<p>The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID <code>MikroTik-xxxxxx</code>, where <code>xxxxxx</code> are the last 6 digits of the device&rsquo;s MAC Address (printed on the back panel).</p>
+<p>Using the device where the <strong>MikroTik Mobile App</strong> is installed, connect to this AP. By default, there&rsquo;s no password.</p>
+<p>Open the <strong>MikroTik Mobile App</strong>. The connection address is prefilled (ex: <code>192.168.88.1</code>). Enter the username and password in the login window. By default, the username is <strong>admin</strong> and there is no password. Select <strong>Connect</strong>.</p>
+<figure>
+    <img src="mikrotik-routerboard-login.png"
+         alt="MikroTik Routerboard wAP LoRa8 kit Login window"/> 
+</figure>
+
+<p>Once logged in, select the <strong>Gear Box Icon</strong> on the top-right corner of the home page.</p>
+<figure>
+    <img src="mikrotik-routerboard-home-page.png"
+         alt="MikroTik Routerboard wAP LoRa8 kit Home page window"/> 
+</figure>
+
+<p>Scroll down and click on <strong>LoRa</strong>. In the <strong>LoRa</strong> config window select <strong>Devices</strong>. Select the <strong>LoRa Device</strong> and disable it.</p>
+<figure>
+    <img src="mikrotik-routerboard-lora-settings.jpeg"
+         alt="MikroTik Routerboard wAP LoRa8 kit LoRa Settings"/> 
+</figure>
+
+<figure>
+    <img src="mikrotik-routerboard-lora-disable.jpeg"
+         alt="MikroTik Routerboard wAP LoRa8 kit LoRa disable"/> 
+</figure>
+
+<p>Back in the <strong>LoRa</strong> section, select the <strong>Servers</strong> section. Select the <strong>+</strong> button to add a new server.</p>
+<p>Edit the server parameters.</p>
+<ul>
+<li><strong>Name</strong>: A distinct name</li>
+<li><strong>Address</strong>: Address of the Gateway Server. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
+<li><strong>Up port</strong>: UDP upstream port of the Gateway Server, typically <code>1700</code>.</li>
+<li><strong>Down port</strong>: UDP downstream port of the Gateway Server, typically <code>1700</code>.</li>
+</ul>
+<p>Now back in the <strong>LoRa</strong> section, select <strong>Devices</strong> and select the <strong>LoRa Device</strong>. Click on <strong>Network Servers</strong> and select the server based on the name in the previous step.</p>
+<p>Go back and click on the device and enable it.</p>
+<figure>
+    <img src="mikrotik-routerboard-lora-enable.png"
+         alt="MikroTik Routerboard wAP LoRa8 kit LoRa enable"/> 
+</figure>
+
+<p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. The traffic packets can be observed by going to <strong>LoRa</strong> &gt; <strong>Traffic</strong> to check if the gateway is seeing traffic (Rx/Tx) packets.</p>
+<p>If no WiFi Access Point is found by the gateway, hold the <strong>Reset</strong> button for 5 seconds during boot time. This will reset the router OS configuration.</p>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Kevin Schiffer on 03 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a6b444375340d44e91e7c4e27e99cd9d21b45be0">
+      doc: Add lightbox functionality and update figure styles
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/mikrotikrouterboard/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

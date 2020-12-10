@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>AWS IoT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/aws-iot/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="AWS IoT">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="AWS IoT">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/aws-iot/">
+  <meta name="twitter:title" content="AWS IoT" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">AWS IoT</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/" class="is-active">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/" class="">Default Integration</a>
+  <ul class="menu-list">
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/architecture/" class="">Architecture</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/deployment-guide/" class="">Deployment Guide</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/things/" class="">Managing Things</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/messages/" class="">Messages</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/metrics/" class="">Metrics</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/update/" class="">Update</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/uninstall/" class="">Uninstall</a>
+    </li>
+    <li>
+      <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/default/troubleshooting/" class="">Troubleshooting AWS IoT Integration</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">AWS IoT
+
+
+</h1>
+
+<div class="content">
+
+  
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="notification is-primary">
+  <h3 class="has-text-light">Cloud, Dedicated Cloud, Enterprise and Marketplace Launcher Only</h3>
+  <p>The following instructions apply to Cloud, Dedicated Cloud, Enterprise and Marketplace Launcher distributions. See the <a href="/download">downloads page</a> for a feature breakdown of distributions of The Things Stack.</p>
+</div>
+
+
+
+<p>The Things Stack integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.</p>
+<p>You can also configure The Things Stack to connect to your AWS IoT Core endpoint via AWS access keys and role-based access control using custom configuration.</p>
+<p>Finally, when running The Things Stack in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.</p>
+<h2 id="default-integration-hahahugoshortcode-s3-hbhb">Default Integration 
+
+
+
+  
+
+  
+
+  
+
+
+<span class="distribution-inline">Cloud, Dedicated Cloud and Enterprise Only</span>
+
+</h2>
+<p>The recommended way to integrate with AWS IoT is by using the <strong>Default Integration</strong> for The Things Stack. This integration is the most feature rich and supports all deployments of The Things Stack. The Default Integration comes with a AWS CloudFormation template to deploy in your AWS account.</p>
+<p><a href="/docs/integrations/aws-iot/default/">Learn how to set up the default AWS IoT integration</a></p>
+<h2 id="custom-iot-core-settings-hahahugoshortcode-s7-hbhb">Custom IoT Core Settings 
+
+
+
+  
+
+  
+
+  
+
+
+<span class="distribution-inline">Cloud, Dedicated Cloud and Enterprise Only</span>
+
+</h2>
+<p>Apart from the default integration which comes with a AWS CloudFormation template, you can also just let The Things Stack publish uplink messages and subscribe to downlink messages to AWS IoT Core. You can configure any AWS IoT Core endpoint, AWS access key, provide role-based access control (RBAC), configure the AWS IoT Core MQTT topic structure and which messages to publish.</p>
+<h2 id="application-server-telemetry-hahahugoshortcode-s9-hbhb">Application Server Telemetry 
+
+
+
+  
+
+
+<span class="distribution-inline">Marketplace Launcher Only</span>
+
+</h2>
+<p>This is a simple integration that only supports publishing uplink messages and requires The Things Stack to run in your AWS account. This is typically only used for <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/">AWS Marketplace AMI</a> deployments.</p>
+<p><a href="/docs/integrations/aws-iot/application-server-telemetry/">Learn how to use Application Server Telemetry</a></p>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-right" href="/docs/integrations/aws-iot/default/">Default Integration →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Johan Stokking on 28 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/72df7a3361a900c3ea8cfa4fa60c756dfd4c6b2e">
+      doc: Fix AWS IoT integration distributions
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/aws-iot/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

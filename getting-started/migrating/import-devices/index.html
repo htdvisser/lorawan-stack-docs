@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Import End Devices in The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="The Things Stack for LoRaWAN">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Import End Devices in The Things Stack">
+  <meta itemprop="description" content="The Things Stack for LoRaWAN">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Import End Devices in The Things Stack">
+  <meta property="og:description" content="The Things Stack for LoRaWAN">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">
+  <meta name="twitter:title" content="Import End Devices in The Things Stack" />
+  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Migrating to The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/major-changes/" class="">Major Changes In The Things Stack</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating from The Things Network Stack V2</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating from ChirpStack</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="">Importable JSON File Reference</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" class="is-active">Import End Devices in The Things Stack</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Import End Devices in The Things Stack
+
+
+</h1>
+
+<div class="content">
+
+<p>To import your devices, you need an application in The Things Stack. This can be done by following instructions for <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Creating an Application</a>.</p>
+<p>To import devices, use the <code>devices.json</code> file you created in the previous step.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h3 id="import-devices-via-the-console-span-classnew-in-versionnew-in-393span">Import devices via the Console <span class="new-in-version">New in 3.9.3</span></h3>
+<p>Open the application you created and click the button <strong>Import end devices</strong></p>
+<figure>
+    <img src="../import-end-devices.png"
+         alt="import devices"/> 
+</figure>
+<p>Select <code>The Things Stack JSON</code> as the <strong>Format</strong> and upload the <code>devices.json</code> file.</p>
+<figure>
+    <img src="../upload-file.png"
+         alt="upload devices.json file"/> 
+</figure>
+<p>Wait for the end devices to be successfully imported. In case any device fails, you will see a relevant error message in the console.</p>
+<figure>
+    <img src="../operation-finished.png"
+         alt="import finished"/> 
+</figure>
+<p>If the import was successful, your devices are added to the list of end devices in your application.</p>
+</section>
+<section data-content="cli">
+  <h3 id="import-devices-via-the-cli">Import devices via the CLI</h3>
+<p>You need the latest version of <code>ttn-lw-cli</code>, the CLI for The Things Stack.</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
+<p>To import the devices.json file, run the following command in <code>ttn-lw-cli</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create --application-id <span class="s2">&#34;imported-application&#34;</span> &lt; devices.json
+</code></pre></div><p>This will import your devices on The Things Stack. In case any device fails, you see a relevant error message at the end of the output.</p>
+<p>If the import was successful, your devices is added to the list of end-devices in your application.</p>
+</section>
+<figure>
+    <img src="../successful-import.png"
+         alt="successful-import"/> 
+</figure>
+<p>You can now start using your devices with The Things Stack!</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can always manually copy-paste the Payload Formatters (if applicable) from The Things Network Stack V2 to your The Things Stack application. See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> for more details.
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/device-json/">← Importable JSON File Reference</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/configure-mac-settings/">Fine-tuning MAC Settings for End Devices →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 26 Nov 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/import-devices.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

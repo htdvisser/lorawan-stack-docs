@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>MultiTech Conduit AEP | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="MultiTech Conduit AEP">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="MultiTech Conduit AEP">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/multitechconduit/">
+  <meta name="twitter:title" content="MultiTech Conduit AEP" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">MultiTech Conduit AEP</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/" class="is-active">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/lbs/" class="">Configure LoRa Basics™ Station</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/udp/" class="">Configure UDP Packet Forwarder</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">MultiTech Conduit AEP
+
+
+</h1>
+
+<div class="content">
+
+<p>The <a href="http://www.multitech.net/developer/products/multiconnect-Conduit-platform/">MultiTech MultiConnect® Conduit™</a> is a configurable, scalable cellular communications gateway for industrial IoT applications.</p>
+<p>This guide will help you set up the Multitech Conduit gateway to communicate over The Things Stack.</p>
+<p>The technical specifications of the Conduit can be found in the software guide in the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">official documentation</a> page.</p>
+<figure class="float plain">
+    <img src="multitech-conduit.png"
+         alt="MultiTech MultiConnect Conduit AEP Gateway"/> 
+</figure>
+
+<figure class="float plain">
+    <img src="multitech-conduit-ap.png"
+         alt="MultiTech MultiConnect Conduit AEP Gateway AP"/> 
+</figure>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>User account on The Things Stack with rights to create Gateways.</li>
+<li>Multitech Conduit AEP Gateway running <a href="http://www.multitech.net/developer/downloads/">mPower 5.30 firmware or later</a>.</li>
+</ol>
+<h2 id="registration">Registration</h2>
+<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
+</div>
+<h2 id="setting-up-the-gateway">Setting Up the Gateway</h2>
+<p>For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech documentation</a> page.</p>
+<p>We have included a few short steps to help you get started.</p>
+<h3 id="connecting-to-the-gateway-as-a-dhcp-server">Connecting to the Gateway as a DHCP Server</h3>
+<p>Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:</p>
+<ul>
+<li>IP Address: 192.168.2.2</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Router Address: 192.168.2.1</li>
+</ul>
+<p>Browse to the IP address of the gateway, 192.168.2.1.</p>
+<p>You may be met with the following screen. In newer versions of Chrome, you can type &ldquo;thisisunsafe&rdquo; to continue past the certificate error screen. Other browsers have different ways of advancing past certificate error screens.</p>
+<figure>
+    <img src="cert-error.png"
+         alt="Chrome Certificate Error"/> 
+</figure>
+
+<p>Once past the certificate screen, create a username and password.</p>
+<p>You will then be met with the first time setup screen. Click <strong>Next</strong>.</p>
+<figure>
+    <img src="first-time-setup.png"
+         alt="First Time Setup"/> 
+</figure>
+
+<p>Set a time and date, and skip the rest of the configuration options.</p>
+<figure>
+    <img src="time-date.png"
+         alt="Time and Date"/> 
+</figure>
+
+<p>Once you have finished the first time setup, click the <strong>Setup</strong> button in the left hand menu, and choose <strong>Network Interfaces</strong>.</p>
+<p>Click on the pen icon for the <strong>eth0</strong> interface to modify it.</p>
+<figure>
+    <img src="network-interfaces.png"
+         alt="Network Interfaces"/> 
+</figure>
+
+<p>Set the <strong>Direction</strong> dropdown to <strong>WAN</strong>, and the <strong>Mode</strong> dropdown to <strong>DHCP Client</strong>.</p>
+<p>Click <strong>Submit</strong> to save the settings.</p>
+<figure>
+    <img src="eth.png"
+         alt="Ethernet Interface"/> 
+</figure>
+
+<p>Next, click the <strong>Administration</strong> button in the left hand menu, and choose the <strong>Access Configuration</strong> submenu.</p>
+<p>Here, enable the <strong>Web Server for HTTP</strong> via <strong>LAN</strong> and <strong>WAN</strong>, and enable <strong>HTTPS</strong> access via <strong>WAN</strong>.</p>
+<p>Optionally, you can also enable <strong>SSH</strong> via <strong>WAN</strong>.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  If you don&rsquo;t enable Web Server or SSH access via WAN, when you connect the gateway to your local network, you will not be able to access it anymore, and you will have to hard reset and start over.
+</div>
+<figure>
+    <img src="access.png"
+         alt="Access Configuration"/> 
+</figure>
+
+<p>Click <strong>Submit</strong> to save the Access Configuration Settings.</p>
+<figure>
+    <img src="access-save.png"
+         alt="Save Access Configuration"/> 
+</figure>
+
+<p>After you have submitted both the <strong>Ethernet Configuration</strong> and <strong>Access Configuration</strong> settings, double check them so you don&rsquo;t lock yourself out!</p>
+<p>Finally, click <strong>Save and Apply</strong> to apply your configuration.</p>
+<p>At this point, the gateway will reboot. It will come back online as a DHCP client, so you can disconnect it from your computer, and connect the gateway directly to your router or local network.</p>
+<h2 id="connecting-the-gateway-to-the-things-stack">Connecting the Gateway to The Things Stack</h2>
+<p>The Multitech Conduit supports LoRa Basics™ Station and the legacy UDP packet forwarder. LoRa Basics™ Station is more secure and supports configuration of custom channel plans, amongst other improvements. The Things Stack supports LoRa Basics™ Station, so please follow instructions for <a href="/docs/gateways/multitechconduit/lbs/">connecting the Multitech Conduit with LoRa Basics™ Station</a>.</p>
+<p>If for some reason LoRa Basics™ Station is not available to you, instructions for connecting with the legacy packet forwarder are <a href="/docs/gateways/multitechconduit/udp/">here</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="packet-forwarder-logs">Packet Forwarder Logs</h3>
+<p>Packet forwarder logs contain the messages received from the devices and the network server. You can use the information to debug the issues.</p>
+<p>You can find the packet forwarder logs using the gateway's web console. Do the following to download the logs onto your device:</p>
+<ul>
+<li>Login to your gateway's web console and navigate to <strong>Administration -&gt; Debug Options</strong>.</li>
+<li>Click on the <strong>Download Logs</strong> button in the <strong>Logging</strong> section to download the logs.</li>
+</ul>
+<figure>
+    <img src="packet-forwarder.png"
+         alt="Packet forwarder"/> 
+</figure>
+
+<p>Now, in the downloaded logs, open the <em>lora-pkt-fwd-1.log</em> file to see the packet forwarder logs.</p>
+<h3 id="upgrading-the-firmware">Upgrading the Firmware</h3>
+<p>If you have an issue with the current firmware version, you can use following steps to upgrade the firmware.</p>
+<p>Refer to the top of your configuration software window to check your firmware version. You have to upgrade the device's firmware to the latest version.</p>
+<p>You can download the firmware upgrades from the downloads section of the <a href="http://www.multitech.net/developer/downloads/">MultiTech website</a>.</p>
+<p>Do the following to upgrade the firmware on your device:</p>
+<ul>
+<li>Before you upgrade your firmware, save your present configuration as a backup.</li>
+<li>Go to the MultiTech website, locate the firmware upgrade file you want for your device(MTCDT AEP x.x.x in the current case, where x.x.x is the latest version available on the website), and download this file to a known location.</li>
+<li>Navigate to <strong>Administration -&gt; Firmware Upgrade</strong>.</li>
+<li>Click on <strong>Choose Firmware Upgrade File</strong> button, and
+<ul>
+<li>Click on <strong>Browse</strong> to find where the firmware file resides that you want to apply.</li>
+<li>Select the file and click on <strong>Open</strong>. The file name appears next to the <strong>Choose Firmware Upgrade File</strong> button. Make sure you select the correct BIN file; otherwise, your device can become inoperable.</li>
+</ul>
+</li>
+<li>Click on <strong>Start Upgrade</strong>.</li>
+</ul>
+<figure>
+    <img src="firmware-upgrade.png"
+         alt="Gateway firmware upgrade window"/> 
+</figure>
+
+<ul>
+<li>A message about the time needed to upgrade appears. Click on <strong>OK</strong>.</li>
+<li>A progress bar appears indicating the status of the upgrade. When the upgrade is completed, your device reboots.</li>
+<li>After the firmware upgrade is completed, verify your configuration to ensure that it is same as what you expected.</li>
+</ul>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The new firmware is written into flash memory. It may take up to 10 minutes to upgrade the firmware. Do not interrupt the devices' power or press the reset button during this time.
+</div>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-right" href="/docs/gateways/multitechconduit/lbs/">Configure LoRa Basics™ Station →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Kevin Schiffer on 03 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a6b444375340d44e91e7c4e27e99cd9d21b45be0">
+      doc: Add lightbox functionality and update figure styles
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/multitechconduit/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

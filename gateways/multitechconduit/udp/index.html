@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Configure UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/udp/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Configure UDP Packet Forwarder">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Configure UDP Packet Forwarder">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/multitechconduit/udp/">
+  <meta name="twitter:title" content="Configure UDP Packet Forwarder" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">MultiTech Conduit AEP</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/lbs/" class="">Configure LoRa Basics™ Station</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/udp/" class="is-active">Configure UDP Packet Forwarder</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Configure UDP Packet Forwarder
+
+
+</h1>
+
+<div class="content">
+
+<p>This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using the UDP Packet Forwarder.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. The Things Stack supports LoRa Basics™ Station, which solves all of these problems, so please <a href="/docs/gateways/multitechconduit/lbs/">use that instead</a>.
+</div>
+<h2 id="configuration">Configuration</h2>
+<p>To configure the gateway for the correct channel plans, you need a <code>global_conf.json</code>.</p>
+<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
+<p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to The Things Stack by following the steps below:</p>
+<p>Click on <strong>LoRaWAN<sup>®</sup></strong> in the menu on the left. It opens the Gateway's configuration page.</p>
+<figure>
+    <img src="../main-menu.png"
+         alt="MultiTech Conduit gateway home page"/> 
+</figure>
+
+<p>Under <strong>Network Settings</strong>, select the mode as &quot;Packet Forwarder&quot;.</p>
+<figure>
+    <img src="../packet-forwarder-menu.png"
+         alt="MultiTech Conduit packet forwarder settings"/> 
+</figure>
+
+<p>On the right side of the &quot;LoRa Packet Forwarder Configuration&quot; section, you can find &quot;Manual Configuration &quot;. Click on it to setup the channel plan manually.</p>
+<figure>
+    <img src="../manual-config.png"
+         alt="Switch to manual configuration mode"/> 
+</figure>
+
+<p>The above step will lead you to the gateway configuration editor tagged as &quot;Config&quot;.</p>
+<figure>
+    <img src="../manual-config-2.png"
+         alt="Manual Configuration"/> 
+</figure>
+
+<p>Copy the contents of the <code>global_conf.json</code> file downloaded earlier and paste them in the gateway console configuration editor.</p>
+<p>Once pasted, modify the value of <code>clksrc</code> to set it to <code>0</code>.</p>
+<p>Click on <strong>Submit</strong> to save the configuration.</p>
+<p>Now, click on <strong>Save and Restart</strong> from the menu.</p>
+<figure>
+    <img src="../save-and-restart.png"
+         alt="Saving the Network Interfaces Configuration"/> 
+</figure>
+
+<p>You will be prompted to confirm the restart. Choose <strong>OK</strong> to proceed.</p>
+<figure>
+    <img src="../confirm.png"
+         alt="Configuration restart prompt"/> 
+</figure>
+
+<p>This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to The Things Stack.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  To know more about other features of the MultiTech Conduit gateway, you can refer to the <strong>mPower Edge AEP software guide</strong> on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech Website</a>.
+</div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/multitechconduit/lbs/">← Configure LoRa Basics™ Station</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 26 Nov 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/multitechconduit/udp.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

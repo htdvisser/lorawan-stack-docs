@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Upgrading The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/upgrading/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Upgrading The Things Stack">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Upgrading The Things Stack">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/upgrading/">
+  <meta name="twitter:title" content="Upgrading The Things Stack" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column">
+
+<h1 class="title is-size-2">Upgrading The Things Stack
+
+
+</h1>
+
+<div class="content">
+
+  
+  
+  
+
+
+  
+
+  
+
+
+<div class="notification is-primary">
+  <h3 class="has-text-light">Enterprise and Open Source Only</h3>
+  <p>The following instructions apply to Enterprise and Open Source distributions. See the <a href="/download">downloads page</a> for a feature breakdown of distributions of The Things Stack.</p>
+</div>
+
+
+
+<p>Follow these instructions to upgrade an existing The Things Stack instance.</p>
+<p>Replace the tag in your <strong>docker-compose.yml</strong> file with the newer version of The Things Stack:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># file: docker-compose.yml</span><span class="w">
+</span><span class="w"></span><span class="k">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethingsnetwork/lorawan-stack:&lt;the tag&gt;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><p>Pull the new images:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull
+Pulling cockroach ... <span class="k">done</span>
+Pulling redis     ... <span class="k">done</span>
+Pulling stack     ... <span class="k">done</span>
+</code></pre></div><p>Shut down the stack:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose down
+Stopping root_stack_1     ... <span class="k">done</span>
+Stopping root_cockroach_1 ... <span class="k">done</span>
+Stopping root_redis_1     ... <span class="k">done</span>
+Removing root_stack_1     ... <span class="k">done</span>
+Removing root_cockroach_1 ... <span class="k">done</span>
+Removing root_redis_1     ... <span class="k">done</span>
+Removing network root_default
+</code></pre></div><p>Run migrations:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db migrate
+Creating network <span class="s2">&#34;root_default&#34;</span> with the default driver
+Creating root_cockroach_1 ... <span class="k">done</span>
+Creating root_redis_1     ... <span class="k">done</span>
+  INFO Connecting to Identity Server database...
+  INFO Detected database CockroachDB CCL v19.2.6 <span class="o">(</span>x86_64-unknown-linux-gnu, built 2020/04/06 18:05:31, go1.12.12<span class="o">)</span>
+  INFO Migrating tables...                     
+  INFO Successfully migrated  
+</code></pre></div><p>Start stack:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d
+root_cockroach_1 is up-to-date
+root_redis_1 is up-to-date
+Creating root_stack_1 ... <span class="k">done</span>
+</code></pre></div>
+</div>
+
+
+<div class="is-clearfix">
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 21 Sep 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3459237237abaaeb07a0d27a14ada3adba71022a">
+      doc: Add pierre styles
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/upgrading.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

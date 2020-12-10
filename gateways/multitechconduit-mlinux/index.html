@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>MultiTech Conduit mLinux | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/multitechconduit-mlinux/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="MultiTech Conduit mLinux">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="MultiTech Conduit mLinux">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/multitechconduit-mlinux/">
+  <meta name="twitter:title" content="MultiTech Conduit mLinux" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">MultiTech Conduit mLinux</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit-mlinux/" class="is-active">Overview</a>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">MultiTech Conduit mLinux
+
+
+</h1>
+
+<div class="content">
+
+<figure class="float plain">
+    <img src="001_Multitech_Conduit.png"
+         alt="MultiTech MultiConnect Conduit Gateway"/> 
+</figure>
+
+<p>The <a href="http://www.multitech.net/developer/products/multiconnect-Conduit-platform/">MultiTech MultiConnect® Conduit™</a> is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of this Conduit can be found in the software guide in the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">official documentation</a> page.</p>
+<p>This guide will help you set up the Multitech Conduit mLinux gateway to communicate over The Things Stack.</p>
+<p>The MultiTech Conduit has two compatible firmwares - <strong>AEP</strong>, which is configured via the browser, and <strong>mLinux</strong>, which is configured via the terminal. This guide is for the <strong>mLinux</strong> firmware.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>User account on The Things Stack with rights to create Gateways.</li>
+<li>Multitech Conduit Gateway running <a href="http://www.multitech.net/developer/downloads/">mLinux 5.2.7 or later</a>.</li>
+</ol>
+<h2 id="registration">Registration</h2>
+<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
+<blockquote>
+<p>The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.</p>
+</blockquote>
+<h2 id="setting-up-the-gateway">Setting Up the Gateway</h2>
+<p>For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech documentation</a> page.</p>
+<p>We have included a few short steps to help you get started.</p>
+<h3 id="connecting-to-the-gateway-as-a-dhcp-server">Connecting to the Gateway as a DHCP Server</h3>
+<p>Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:</p>
+<ul>
+<li>IP Address: 192.168.2.2</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Router Address: 192.168.2.1</li>
+</ul>
+<h3 id="commissioning">Commissioning</h3>
+<p>After connecting to the gateway, it must be commissioned, or you will not be able to login to the gateway. See instructions <a href="https://www.multitech.net/developer/software/mlinux/getting-started-with-conduit-mlinux/commissioning-for-mlinux-devices/">here</a>. In short, open a browser to the gateway&rsquo;s IP, 192.168.2.1, and set a username and password.</p>
+<h3 id="configuring-the-gateway-as-a-dhcp-client">Configuring the Gateway as a DHCP Client</h3>
+<p>To connect the gateway to your network, you must reconfigure it as a DHCP client. After commissioning the device, ssh in using the username and password you set up:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@192.168.2.1
+</code></pre></div><p>Modify the network configuration file, <code>/etc/network/interfaces</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo nano /etc/network/interfaces
+</code></pre></div><p>Configure the eth0 peripheral as dhcp, and comment out the static configuration:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Wired interface</span>
+auto eth0
+iface eth0 inet dhcp
+<span class="c1">#iface eth0 inet static</span>
+<span class="c1">#address 192.168.2.1</span>
+<span class="c1">#netmask 255.255.255.0</span>
+<span class="c1">#gateway 192.168.2.254</span>
+</code></pre></div><p>Reboot your gateway to enable the new network configuration, and now you can connect your gateway to your router and finish the configuration for The Things Stack.</p>
+<h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
+<h3 id="downloading-global_confjson">Downloading Global_conf.json</h3>
+<p>To configure the gateway for the correct channel plans, you need a <code>global_conf.json</code>.</p>
+<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
+<h3 id="configuring-the-packet-forwarder">Configuring the Packet Forwarder</h3>
+<p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway.</p>
+<p>Login to your router at its IP address on your local network, and copy the <code>global_conf.json</code> contents in to a file at <code>/var/config/lora/global_conf.json</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@&lt;GATEWAY_IP_ADDRESS&gt;
+$ sudo mkdir /var/config/lora
+$ sudo touch /var/config/lora/global_conf.json
+$ sudo nano /var/config/lora/global_conf.json
+</code></pre></div><p>Copy in the contents of the <code>global_conf.json</code> file you downloaded. While the file is open, change the value of <code>clksrc</code> to <code>0</code>:</p>
+<pre><code>&quot;SX1301_conf&quot;: {
+                &quot;lorawan_public&quot;: true,
+                &quot;clksrc&quot;: 0, # Change this value
+                &quot;antenna_gain&quot;: 0,
+                ...
+</code></pre><blockquote>
+<p>Warning: Multitech devices require a <code>clksrc</code> of <code>0</code>. Do not skip this step, or your device <a href="https://www.multitech.net/developer/software/lora/conduit-mlinux-convert-to-basic-packet-forwarder/#SX1301_conf">will not work!</a></p>
+</blockquote>
+<p>Finally, edit the configuration settings to start the <code>lora-packet-forwarder</code> by default, and disable the <code>lora-network-server</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/lora-network-server stop
+$ sudo nano /etc/defaults/lora-network-server
+<span class="c1">#ENABLED=”no”</span>
+
+$ sudo nano /etc/defaults/lora-packet-forwarder
+<span class="c1">#ENABLED=”yes”</span>
+</code></pre></div><p>Start the packet forwarder, and The Things Stack will begin receiving packets from your gateway:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo /etc/init.d/lora-packet-forwarder start
+</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="lora-card-not-detected">LORA card not detected</h3>
+<p>If you receive a <code>LORA card not detected</code> error, make sure you start the <code>lora-packet-forwarder</code> as <code>sudo</code>.</p>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Kevin Schiffer on 03 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a6b444375340d44e91e7c4e27e99cd9d21b45be0">
+      doc: Add lightbox functionality and update figure styles
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/multitechconduit-mlinux/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

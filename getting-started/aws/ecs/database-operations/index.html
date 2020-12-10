@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Database Operations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Database Operations">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Database Operations">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">
+  <meta name="twitter:title" content="Database Operations" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">AWS ECS</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="">Architecture</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="">Prerequisites</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="">Deployment</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="is-active">Database Operations</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="">Monitoring</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Database Operations
+
+
+</h1>
+
+<div class="content">
+
+<p>This page describes the steps for performing database operations on an AWS ECS deployment.</p>
+<p>The <code>OpsRunTaskArguments</code> output of the stack deployed from the <code>5-2-ecs-ops</code> template contains the parameters needed to run (database) operations. The value of this output contains:</p>
+<pre><code>TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
+</code></pre><p>To run a task from the AWS Console, go to <strong>Amazon ECS</strong> &gt; <strong>Clusters</strong> &gt; your cluster &gt; <strong>Tasks</strong>, and click <strong>Run new Task</strong>.</p>
+<p>For <strong>Task Definition</strong> select the latest version of the ops task definition (<code>TASK_DEFINITION</code> from earlier).</p>
+<p>Select the <strong>VPC</strong>, and for <strong>Subnets</strong> the subnets <code>SUBNET_ONE</code> and <code>SUBNET_TWO</code> from the <code>OpsRunTaskArguments</code> mentioned earlier. Instead of creating a new security group, select the existing <code>SECURITY_GROUP</code> listed in <code>OpsRunTaskArguments</code>.</p>
+<p>Under <strong>Advanced Options</strong> &gt; <strong>Container Overrides</strong> &gt; <code>ttes</code>, set the <strong>Command override</strong> to the command you want to run, separating arguments with commas. A typical command will look like <code>tti-lw-stack,COMMAND,ARGUMENTS,AND,FLAGS</code>.</p>
+<p>Alternatively, you can run ops commands using the AWS CLI:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ aws ecs run-task <span class="se">\
+</span><span class="se"></span>  --task-definition TASK_DEFINITION <span class="se">\
+</span><span class="se"></span>  --cluster CLUSTER_NAME <span class="se">\
+</span><span class="se"></span>  --launch-type EC2 <span class="se">\
+</span><span class="se"></span>  --network-configuration <span class="s1">&#39;{
+</span><span class="s1">    &#34;awsvpcConfiguration&#34;:{
+</span><span class="s1">      &#34;subnets&#34;:[
+</span><span class="s1">        &#34;SUBNET_ONE&#34;,
+</span><span class="s1">        &#34;SUBNET_TWO&#34;
+</span><span class="s1">      ],
+</span><span class="s1">      &#34;securityGroups&#34;:[
+</span><span class="s1">        &#34;SECURITY_GROUP&#34;
+</span><span class="s1">      ],
+</span><span class="s1">      &#34;assignPublicIp&#34;:&#34;DISABLED&#34;
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  --overrides <span class="s1">&#39;{
+</span><span class="s1">    &#34;containerOverrides&#34;:[
+</span><span class="s1">      {
+</span><span class="s1">        &#34;name&#34;:&#34;ttes&#34;,
+</span><span class="s1">        &#34;command&#34;:[
+</span><span class="s1">          &#34;tti-lw-stack&#34;,&#34;COMMAND&#34;,&#34;ARGUMENTS&#34;,&#34;AND&#34;,&#34;FLAGS&#34;
+</span><span class="s1">        ]
+</span><span class="s1">      }
+</span><span class="s1">    ]
+</span><span class="s1">  }&#39;</span>
+</code></pre></div><p>In this case, the command, arguments and flags need to be written as a JSON array.</p>
+<h2 id="initialize-identity-server-database">Initialize Identity Server Database</h2>
+<p>When deploying your main cluster with Identity Server for the first time, the database needs to be initialized.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,init
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;init&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for the stack to work.
+</div>
+<h2 id="create-a-tenant-in-the-identity-server-database-multi-tenant-only">Create a Tenant in the Identity Server Database (multi-tenant only)</h2>
+<p>If you can not, or do not want to use the Tenant Billing Server or the API to create tenants, you can create tenants directly in the database.</p>
+<p>The command for this is:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,create-tenant,--id=$TENANT_ID,--name=$TENANT_NAME
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-tenant&quot;,&quot;--id=$TENANT_ID&quot;,&quot;--name=$TENANT_NAME&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>$TENANT_ID</code> and <code>$TENANT_NAME</code> with your own.
+</div>
+<h2 id="create-the-oauth-client-for-the-command-line-interface">Create the OAuth Client for the Command-Line Interface</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command Line Interface,--no-secret,--redirect-uri=local-callback,--redirect-uri=code
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=cli&quot;,&quot;--name=Command Line Interface&quot;,&quot;--no-secret&quot;,&quot;--redirect-uri=local-callback&quot;,&quot;--redirect-uri=code&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.
+</div>
+<h2 id="create-the-oauth-client-for-the-console">Create the OAuth Client for the Console</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://domain/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://domain/console
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=$ID&quot;,&quot;--name=$NAME&quot;,&quot;--secret=$CLIENT_SECRET&quot;,&quot;--redirect-uri=/console/oauth/callback&quot;,&quot;--redirect-uri=https://domain/console/oauth/callback&quot;,&quot;--logout-redirect-uri=/console&quot;,&quot;--logout-redirect-uri=https://domain/console&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <ul>
+<li>Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.</li>
+<li>Replace the values of <code>$ID</code>, <code>$NAME</code> and <code>$CLIENT_SECRET</code> with your own. <code>id</code> and <code>secret</code> can be found in the <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code> secret in the AWS Secrets Manager.</li>
+<li>For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit <code>--redirect-uri=/console/oauth/callback</code> and <code>--logout-redirect-uri=/console</code>.</li>
+<li>You can use a similar command for the Device Claiming server if you use <code>/claim</code> instead of <code>/console</code> for the redirect URIs.</li>
+</ul>
+
+</div>
+<h2 id="create-admin-user">Create Admin User</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL,--password,$ADMIN_PASSWORD
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-admin-user&quot;,&quot;--tenant-id&quot;,&quot;$TENANT_ID&quot;,&quot;--email&quot;,&quot;$ADMIN_EMAIL&quot;,&quot;--password&quot;,&quot;$ADMIN_PASSWORD&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Replace <code>$TENANT_ID</code>, <code>$ADMIN_EMAIL</code> and <code>$ADMIN_PASSWORD</code> with your own.
+</div>
+<h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
+<p>Before upgrading the Identity Server to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,is-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;migrate&quot;]
+</code></pre>
+</section>
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/aws/ecs/deployment/">← Deployment</a>
+<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/monitoring/">Monitoring →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Michał Borkowski on 01 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/eb83e14117e646b48d30f05d31b41b78d6dcb353">
+      doc: Improve documentation of stack init
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/database-operations/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

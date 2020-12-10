@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Networking | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/networking/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Networking">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Networking">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/networking/">
+  <meta name="twitter:title" content="Networking" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Networking</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/reference/networking/" class="is-active">Overview</a>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Networking
+
+
+</h1>
+
+<div class="content">
+
+<p>The Things Stack uses a port per protocol, with a TLS counterpart when applicable. Ports can be shared by multiple services using the same protocol, i.e. gRPC services sharing management, data and events services.</p>
+<h2 id="port-allocations">Port Allocations</h2>
+<p>The following table lists the default ports used.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Purpose</strong></th>
+<th><strong>Protocol</strong></th>
+<th><strong>Authentication</strong></th>
+<th><strong>Port</strong></th>
+<th><strong>Port (TLS)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateway data</td>
+<td><a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT">Semtech Packet Forwarder</a></td>
+<td>None</td>
+<td>1700 (UDP)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Gateway data</td>
+<td>MQTT (V2)</td>
+<td>API key, token</td>
+<td>1881</td>
+<td>8881</td>
+</tr>
+<tr>
+<td>Gateway data</td>
+<td>MQTT</td>
+<td>API key, token</td>
+<td>1882</td>
+<td>8882</td>
+</tr>
+<tr>
+<td>Application data, events</td>
+<td>MQTT</td>
+<td>API key, token</td>
+<td>1883</td>
+<td>8883</td>
+</tr>
+<tr>
+<td>Management, data, events</td>
+<td>gRPC</td>
+<td>API key, token</td>
+<td>1884</td>
+<td>8884</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>HTTP</td>
+<td>API key, token</td>
+<td>1885</td>
+<td>8885</td>
+</tr>
+<tr>
+<td>Backend Interfaces</td>
+<td>HTTP</td>
+<td>Custom</td>
+<td>N/A</td>
+<td>8886</td>
+</tr>
+<tr>
+<td>LoRa Basics™ Station LNS</td>
+<td>Web Sockets</td>
+<td>Auth Token, Custom</td>
+<td>1887</td>
+<td>8887</td>
+</tr>
+<tr>
+<td>Tabs Hubs LNS 
+
+
+
+  
+
+  
+
+
+<span class="distribution-inline">Cloud and Enterprise Only</span>
+
+</td>
+<td>Web Sockets</td>
+<td>Auth Token, Custom</td>
+<td>1888</td>
+<td>8888</td>
+</tr>
+</tbody>
+</table>
+<h2 id="service-discovery">Service Discovery</h2>
+<p>The Things Stack supports discovering services using DNS SRV records. This is useful when dialing a cluster only by host name; the supported services and target host name and port are discovered using DNS.</p>
+<p>To support service discovery for your The Things Stack cluster, configure DNS SRV records with the following services and protocols:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Protocol</strong></th>
+<th><strong>SRV Service</strong></th>
+<th><strong>SRV Protocol</strong></th>
+<th><strong>SRV Target</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-is-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Identity Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-gs-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Gateway Server</td>
+</tr>
+<tr>
+<td>Semtech Packet Forwarder</td>
+<td><code>ttn-v3-gs-udp</code></td>
+<td><code>udp</code></td>
+<td>Gateway Server</td>
+</tr>
+<tr>
+<td>MQTT (V2)</td>
+<td><code>ttn-v3-gs-mqttv2</code></td>
+<td><code>tcp</code></td>
+<td>Gateway Server</td>
+</tr>
+<tr>
+<td>MQTT</td>
+<td><code>ttn-v3-gs-mqtt</code></td>
+<td><code>tcp</code></td>
+<td>Gateway Server</td>
+</tr>
+<tr>
+<td>Basic Station LNS</td>
+<td><code>ttn-v3-gs-basicstationlns</code></td>
+<td><code>tcp</code></td>
+<td>Gateway Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-ns-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Network Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-as-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Application Server</td>
+</tr>
+<tr>
+<td>MQTT</td>
+<td><code>ttn-v3-as-mqtt</code></td>
+<td><code>tcp</code></td>
+<td>Application Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-js-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Join Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-dtc-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Device Template Converter</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-dcs-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Device Claiming Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-gcs-grpc</code></td>
+<td><code>tcp</code></td>
+<td>Gateway Configuration Server</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td><code>ttn-v3-qrg-grpc</code></td>
+<td><code>tcp</code></td>
+<td>QR Code Generator</td>
+</tr>
+</tbody>
+</table>
+<p>For port, use the ports as defined above, or any custom port that you configured for your The Things Stack cluster.</p>
+<h3 id="example-link-external-application-server">Example: Link External Application Server</h3>
+<p>If you want to link an Application Server outside your cluster on the Network Server, you can configure the DNS SRV record for the Network Server as follows:</p>
+<pre><code>_ttn-v3-ns-grpc._tcp.example.com. 86400 IN SRV 0 5 8884 ns.example.com.
+</code></pre><p>When you configure the application link with <code>example.com</code> as Network Server address and enable TLS, the Application Server will discover the Network Server on <code>ns.example.com</code> and port <code>8884</code>.</p>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer Easwaran on 27 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ab23fc1b699de74c3a1a8834eeb82221d8a0abaa">
+      doc: Update websocket based ports
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/networking/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>

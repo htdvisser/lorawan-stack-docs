@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Adding Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Adding Devices">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Adding Devices">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/adding-devices/">
+  <meta name="twitter:title" content="Adding Devices" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Adding Devices</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/devices/adding-devices/" class="is-active">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/troubleshooting/" class="">Troubleshooting Devices</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Adding Devices
+
+
+</h1>
+
+<div class="content">
+
+<p>This section contains instructions for adding devices in The Things Stack.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h2 id="adding-devices-using-the-console">Adding Devices using the Console</h2>
+<p>Go to <strong>Devices</strong> in the left menu and click on <strong>+ Add Device</strong> to reach the end device registration page. Fill the device ID, the LoRaWAN MAC and PHY versions and the frequency plan used by the device.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The PHY version represents the revision of the LoRAWAN Regional Parameters that the device expects, and must be correlated with the MAC version.
+</div>
+<figure>
+    <img src="device-creation-1.png"
+         alt="Creating a new device"/> 
+</figure>
+<h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+<p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Over The Air Activation</strong> is selected.</p>
+<p>Fill the <strong>JoinEUI</strong> (AppEUI in LoRaWAN versions before 1.1), <strong>DevEUI</strong> and <strong>AppKey</strong>. The <strong>NwkKey</strong> is only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
+<p>Press <strong>Create Device</strong> to create the device.</p>
+<figure>
+    <img src="device-creation-otaa.png"
+         alt="Creating an OTAA device"/> 
+</figure>
+<p>You will now reach the device overview page for your device. The end device should now be able to join the private network.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, it is okay to use <code>0000000000000000</code>. Be sure to use the same <code>JoinEUI</code> in your device as you enter in The Things Stack.
+</div>
+<figure>
+    <img src="device-otaa-created.png"
+         alt="OTAA device overview"/> 
+</figure>
+<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Activation By Personalization</strong> is selected.</p>
+<p>Fill the <strong>Device Address</strong>, the <strong>FNwkSIntKey</strong> (NwkSKey in LoRaWAN versions before 1.1) and the <strong>AppSKey</strong>. The other key fields are only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
+<p>Press <strong>Create Device</strong> to create the device.</p>
+<figure>
+    <img src="device-creation-abp.png"
+         alt="Creating an ABP device"/> 
+</figure>
+<p>You will now reach the device overview page for your device. The end device should now be able to communicate with the private network.</p>
+<figure>
+    <img src="device-abp-created.png"
+         alt="ABP device overview"/> 
+</figure>
+</section>
+<section data-content="cli">
+  <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
+<p>First, list the available frequency plans and LoRaWAN versions:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices list-frequency-plans
+$ ttn-lw-cli end-devices create --help
+</code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+<p>To create an end device using over-the-air-activation (OTAA):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
+</span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
+</span><span class="se"></span>  --app-eui 800000000000000C <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A <span class="se">\
+</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a
+</code></pre></div><p>This will create a LoRaWAN 1.0.3 end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan.</p>
+<p>The end device should now be able to join the private network.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, it is okay to use <code>0000000000000000</code>. Be sure to use the same <code>JoinEUI</code> in your device as you enter in The Things Stack.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>AppEUI</code> is returned as <code>join_eui</code> (V3 uses LoRaWAN 1.1 terminology).
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can also pass <code>--with-root-keys</code> to have root keys generated.
+</div>
+<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<p>It is also possible to register an ABP activated device using the <code>--abp</code> flag as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev2 <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
+</span><span class="se"></span>  --abp <span class="se">\
+</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
+</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
+</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>NwkSKey</code> is returned as <code>f_nwk_s_int_key</code> (The Things Stack uses LoRaWAN 1.1 terminology).
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can also pass <code>--with-session</code> to have a session generated.
+</div>
+</section>
+
+</div>
+
+<p>Once a device has been added, get started with <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+</div>
+
+
+
+
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-right" href="/docs/devices/adding-devices/troubleshooting/">Troubleshooting Devices →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 26 Nov 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/adding-devices/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4="></script>
+
+</body>
+
+</html>
